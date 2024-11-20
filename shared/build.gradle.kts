@@ -3,6 +3,8 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
+    id("com.google.devtools.ksp") version "2.0.21-1.0.27"
+    id("io.mockative") version "3.0.0"
 }
 
 kotlin {
@@ -15,7 +17,7 @@ kotlin {
             }
         }
     }
-    
+
     listOf(
         iosX64(),
         iosArm64(),
@@ -33,6 +35,7 @@ kotlin {
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
+            implementation("io.mockative:mockative:3.0.0")
         }
     }
 }
